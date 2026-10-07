@@ -10,7 +10,6 @@
 <meta name="theme-color" content="#ffffff">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ChatGPT">
-<meta http-equiv="refresh" content="1;url=https://chatgpt.com/?lightweight_authenticated=1&amp;mweb_fallback=1#">
 <style>
   html,body{height:100%;margin:0}
   body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
@@ -24,7 +23,12 @@
   <img src="icon-192.png" alt="">
   <a id="go" href="https://chatgpt.com/?lightweight_authenticated=1&mweb_fallback=1#">ChatGPT öffnen</a>
 <script>
-  location.replace("https://chatgpt.com/?lightweight_authenticated=1&mweb_fallback=1#");
+  // Nur weiterleiten, wenn als installierte Web-App gestartet (nicht im Browser)
+  var standalone = window.navigator.standalone === true ||
+    window.matchMedia("(display-mode: standalone)").matches;
+  if (standalone) {
+    location.replace("https://chatgpt.com/?lightweight_authenticated=1&mweb_fallback=1#");
+  }
 </script>
 </body>
 </html>
